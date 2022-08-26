@@ -16,7 +16,7 @@ import {
   Select,
 } from 'antd';
 import { addChef, editChef } from 'src/api/strApi/chefAction';
-import { tableDataAction } from 'src/common/types';
+import { tableDataActionType } from 'src/common/types';
 import classnames from 'classnames';
 import style from './style.module.less';
 
@@ -42,7 +42,7 @@ const ChefAction: FC<ChefActionProps> = (props) => {
 
   useEffect(() => {
     if (!isShow) return;
-    if (type === tableDataAction.edit) {
+    if (type === tableDataActionType.edit) {
       const newData = {
         name: data.name,
         age: data.age as number,

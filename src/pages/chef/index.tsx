@@ -11,7 +11,7 @@ import { Button, message, Popconfirm, Space, Tooltip } from 'antd';
 import { deleteChefOne, getChefsList } from 'src/api/strApi/chefAction';
 import Search from 'antd/lib/input/Search';
 import ChefAction from './components/chefAction';
-import { tableDataAction } from 'src/common/types';
+import { tableDataActionType } from 'src/common/types';
 import style from './style.module.less';
 import { getDingniRoomList } from 'src/api/strApi/dingniRoom';
 
@@ -34,7 +34,7 @@ const Chef: FC<ChefProps> = (props) => {
 
   const [loading, setLoading] = useState<boolean>(true);
 
-  const [type, setType] = useState<tableDataAction>(tableDataAction.add);
+  const [type, setType] = useState<tableDataActionType>(tableDataActionType.add);
 
   const [actionData, setActionData] = useState<StrApi.ResChefsListItem>({});
 
@@ -95,7 +95,7 @@ const Chef: FC<ChefProps> = (props) => {
                 onClick={() => {
                   setActionData(record);
                   setIsShow(true);
-                  setType(tableDataAction.edit);
+                  setType(tableDataActionType.edit);
                 }}
               >
                 edit
@@ -189,7 +189,7 @@ const Chef: FC<ChefProps> = (props) => {
           onClick={() => {
             setIsShow(true);
             setActionData({});
-            setType(tableDataAction.add);
+            setType(tableDataActionType.add);
           }}
         >
           +Add

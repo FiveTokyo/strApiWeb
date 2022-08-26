@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { Button, message, Popconfirm, Space, Table, Tag, Tooltip } from 'antd';
 import DingniRoomAction from './components/dingniRoomAction';
 import { Link, useNavigate } from 'react-router-dom';
-import { tableDataAction } from 'src/common/types';
+import { tableDataActionType } from 'src/common/types';
 import Search from 'antd/lib/input/Search';
 import { ColumnsType } from 'antd/lib/table';
 import {
@@ -49,7 +49,7 @@ const DiningRoom: FC<DiningRoomProps> = (props) => {
     {},
   );
 
-  const [type, setType] = useState<tableDataAction>(tableDataAction.add);
+  const [type, setType] = useState<tableDataActionType>(tableDataActionType.add);
 
   const columns: ColumnsType<StrApi.ResDingniRoomListItem> = [
     {
@@ -108,7 +108,7 @@ const DiningRoom: FC<DiningRoomProps> = (props) => {
                 onClick={() => {
                   setActionData(record);
                   setIsShow(true);
-                  setType(tableDataAction.edit);
+                  setType(tableDataActionType.edit);
                 }}
               >
                 edit
@@ -202,7 +202,7 @@ const DiningRoom: FC<DiningRoomProps> = (props) => {
           onClick={() => {
             setIsShow(true);
             setActionData({});
-            setType(tableDataAction.add);
+            setType(tableDataActionType.add);
           }}
         >
           +Add

@@ -14,7 +14,7 @@ import {
   FormInstance,
   message,
 } from 'antd';
-import { tableDataAction } from 'src/common/types';
+import { tableDataActionType } from 'src/common/types';
 import { addDingniRoom, editDingniRoom } from 'src/api/strApi/dingniRoom';
 import classnames from 'classnames';
 import style from './style.module.less';
@@ -42,7 +42,7 @@ const DingniRoomAction: FC<DingniRoomActionProps> = (props) => {
 
   useEffect(() => {
     if (!isShow) return;
-    if (type === tableDataAction.edit) {
+    if (type === tableDataActionType.edit) {
       const newData = {
         name: data.name,
         address: data.address,

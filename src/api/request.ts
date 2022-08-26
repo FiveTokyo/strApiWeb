@@ -84,7 +84,7 @@ const handleApiError = async (error: AxiosError) => {
     }
 
     if ([401].includes(code)) {
-
+        window.location.href = '/'
         return Promise.reject(error)
     } else {
         let msg = '未知错误'
