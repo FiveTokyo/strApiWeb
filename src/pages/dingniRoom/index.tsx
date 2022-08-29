@@ -15,7 +15,7 @@ import { ColumnsType } from 'antd/lib/table';
 import {
   deleteDingniRoomOne,
   getDingniRoomList,
-} from 'src/api/strApi/dingniRoom';
+} from 'src/api/strApi/dingniRoomAction';
 import style from './style.module.less';
 import { getChefsList } from 'src/api/strApi/chefAction';
 

@@ -15,7 +15,7 @@ import {
   message,
 } from 'antd';
 import { tableDataActionType } from 'src/common/types';
-import { addDingniRoom, editDingniRoom } from 'src/api/strApi/dingniRoom';
+import { addDingniRoom, editDingniRoom } from 'src/api/strApi/dingniRoomAction';
 import classnames from 'classnames';
 import style from './style.module.less';
 

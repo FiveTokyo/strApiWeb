@@ -13,7 +13,7 @@ import Search from 'antd/lib/input/Search';
 import ChefAction from './components/chefAction';
 import { tableDataActionType } from 'src/common/types';
 import style from './style.module.less';
-import { getDingniRoomList } from 'src/api/strApi/dingniRoom';
+import { getDingniRoomList } from 'src/api/strApi/dingniRoomAction';
 import { useNavigate } from 'react-router-dom';
 
 export interface ChefProps {
