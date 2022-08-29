@@ -14,6 +14,7 @@ import ChefAction from './components/chefAction';
 import { tableDataActionType } from 'src/common/types';
 import style from './style.module.less';
 import { getDingniRoomList } from 'src/api/strApi/dingniRoom';
+import { useNavigate } from 'react-router-dom';
 
 export interface ChefProps {
   [key: string]: any;
@@ -28,15 +29,22 @@ const Chef: FC<ChefProps> = (props) => {
     StrApi.ResDingniRoomListItem[]
   >([]);
 
+  // const a = MemoryRouter({});
+  console.log('a', );
+
   const [isShow, setIsShow] = useState<boolean>(false);
 
   const [filter, setFilter] = useState<any>({});
 
   const [loading, setLoading] = useState<boolean>(true);
 
-  const [type, setType] = useState<tableDataActionType>(tableDataActionType.add);
+  const [type, setType] = useState<tableDataActionType>(
+    tableDataActionType.add,
+  );
 
   const [actionData, setActionData] = useState<StrApi.ResChefsListItem>({});
+
+  const navigate = useNavigate();
 
   const columns: ColumnsType<StrApi.ResChefsListItem> = [
     {
@@ -150,6 +158,7 @@ const Chef: FC<ChefProps> = (props) => {
   };
 
   const onSearch = (value: string) => {
+    navigate(-1);
     setFilter({ name: { $contains: value } });
   };
 

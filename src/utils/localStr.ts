@@ -1,9 +1,9 @@
-import { get, set, rm, setPrefix } from 'lockr';
+import { get, set, rm, setPrefix, getAll } from 'lockr';
 import { encryptByAES, decryptByAES } from './secret'
 // const tokenName = 'tokenName'
 // const username = 'username';
 // const password = 'password';
-// setPrefix('tuo')
+setPrefix('tuo')
 
 /** 设置localStorage
  * @param  {string} tokenName //localStorage名称
@@ -20,6 +20,7 @@ export function setLockr(tokenName: string, token: string) {
  * @returns string  localStorage数据
  */
 export function getLockr(tokenName: string): string {
+    if(getAll().length < 1) return ''
     return decryptByAES(get(tokenName))
 }
 

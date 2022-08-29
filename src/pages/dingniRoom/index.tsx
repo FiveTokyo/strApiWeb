@@ -133,6 +133,7 @@ const DiningRoom: FC<DiningRoomProps> = (props) => {
 
   useEffect(() => {
     (async () => {
+
       await initData();
     })();
   }, [filter]);

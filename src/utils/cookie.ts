@@ -28,7 +28,7 @@ export function setToken(tokenName: string, token: string): string | undefined {
  * @returns string  cookie数据
  */
 export function getToken(tokenName: string): string | undefined {
-  return encryptByAES(Cookie.get(tokenName) as string);
+  return encryptByAES(Cookie.get(tokenName) || "" as string);
 }
 
 /** 移除cookie

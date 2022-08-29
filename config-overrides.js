@@ -39,7 +39,6 @@ const addCustomize = () => config => {
 }
 // 跨域配置
 const devServerConfig = () => config => {
-  console.log('process.env.REACT_APP_PROXY_URL:', process.env.REACT_APP_PROXY_URL)
   return {
     ...config,
     // 服务开启gzip

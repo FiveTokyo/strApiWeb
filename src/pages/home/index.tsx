@@ -5,12 +5,9 @@
  */
 
 import React, { FC, useEffect, useContext } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { userInfoContext } from '../../App';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import request from '../../api/request';
 import classnames from 'classnames';
-import { getLockr, setLockr } from '../../utils/localStr';
-import { uerLogin } from 'src/api/strApi/userAction';
 
 import style from './style.module.less';
 export interface HomeProps {
@@ -20,17 +17,6 @@ export interface HomeProps {
 const Home: FC<HomeProps> = (props) => {
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    (async () => {
-      const res: StrApi.ResLogin = await uerLogin({
-        identifier: 'wudongjing',
-        password: 'f#yxJiT56ZuFzC3',
-      });
-
-      setLockr('jwt', res.jwt);
-    })();
-  }, []);
 
   return (
     <div className={style.home}>
