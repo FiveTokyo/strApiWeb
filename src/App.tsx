@@ -15,26 +15,39 @@ import {
 import { pushHistoryUrl, historyUrls } from './utils/getViewHistory';
 import { uerLogin } from './api/strApi/userAction';
 import { setLockr } from './utils/localStr';
+import { useRequest } from '../src/hooks/useRequest';
 import './App.css';
-
+import { ChefApi } from './generated/openapi';
 
 export let userInfoContext: any = {};
 
 function App(_props: any) {
   const location = useLocation();
-  const navigationType = useNavigationType();
+  const { configuration } = useRequest();
 
-  const navigate = useNavigate()
+  const cheApi = new ChefApi(configuration);
+  const navigationType = useNavigationType();
+  // const [request, token, tokenValidity] = useRequest();
+  const navigate = useNavigate();
 
   useLayoutEffect(() => {
     (async () => {
       try {
-        const res: StrApi.ResLogin = await uerLogin({
-          identifier: 'wudongjing',
-          password: 'f#yxJiT56ZuFzC3',
-        });
+        await cheApi.getChefsRaw({paginationPage: 1});
 
-        setLockr('jwt', res.jwt);
+        // const test = await request('/api/auth/local', {
+        //   method: 'POST',
+        //   data: {
+        //     identifier: 'wudongjing',
+        //     password: 'f#yxJiT56ZuFzC3',
+        //   },
+        // });
+        // console.log('test:',  token, tokenValidity)
+        // const res: StrApi.ResLogin = await uerLogin({
+        //   identifier: 'wudongjing',
+        //   password: 'f#yxJiT56ZuFzC3',
+        // });
+        // setLockr('jwt', res.jwt);
       } catch (error) {}
     })();
   }, []);
@@ -42,8 +55,6 @@ function App(_props: any) {
   useLayoutEffect(() => {
     removeAllPendingRequestsRecord();
     pushHistoryUrl(location, navigationType);
-    console.log('location:', historyUrls, navigationType, );
-    window.history.back()
   }, [location.pathname]);
 
   const element = useRoutes(routes);

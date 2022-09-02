@@ -7,7 +7,8 @@
     "build": "dotenv -e .env.prd react-app-rewired build",
     "build:analyzer": "cross-env ANALYZER=true react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "codegen": "rimraf -rf src/generated/openapi && openapi-generator-cli generate -i ./openapi/test.json -o src/generated/openapi -g typescript-fetch --additional-properties=supportsES6=true,npmVersion=6.9.0,typescriptThreePlus=true"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
