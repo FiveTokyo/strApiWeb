@@ -1,0 +1,353 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "test",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "tuzhi"
+    }
+  ],
+  "paths": {
+    "/chefs": {
+      "get": {
+        "tags": [
+          "tuzhi"
+        ],
+        "summary": "chefs",
+        "description": "",
+        "parameters": [
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "排序",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination[withCount]",
+            "in": "query",
+            "description": "是否返回meta属性，默认true",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination[page]",
+            "in": "query",
+            "description": "码数",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination[pageSize]",
+            "in": "query",
+            "description": "页数量",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination[start]",
+            "in": "query",
+            "description": "开始码数",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination[limit]",
+            "in": "query",
+            "description": "一页最多限制多少数量",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "过滤字段",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "populate",
+            "in": "query",
+            "description": "关联",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-apifox-folder": "tuzhi",
+        "x-apifox-status": "developing"
+      }
+    },
+    "/auth/local": {
+      "post": {
+        "tags": [
+          "tuzhi"
+        ],
+        "summary": "login",
+        "description": "",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-apifox-folder": "tuzhi",
+        "x-apifox-status": "developing"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "inline_response_200": {
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/inline_response_200_data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/inline_response_200_meta"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "meta"
+        ],
+        "x-apifox-ignore-properties": []
+      },
+      "": {
+        "title": "",
+        "required": [
+          "password",
+          "user_name"
+        ],
+        "type": "object",
+        "properties": {
+          "user_name": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "x-apifox-orders": [
+          "user_name",
+          "password"
+        ],
+        "x-apifox-ignore-properties": []
+      },
+      "inline_response_200_1": {
+        "required": [
+          "jwt",
+          "user"
+        ],
+        "type": "object",
+        "properties": {
+          "jwt": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/inline_response_200_1_user"
+          }
+        },
+        "x-apifox-orders": [
+          "jwt",
+          "user"
+        ],
+        "x-apifox-ignore-properties": []
+      },
+      "inline_response_200_data_attributes": {
+        "required": [
+          "age",
+          "createdAt",
+          "name",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "age": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_data_items": {
+        "required": [
+          "attributes",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "attributes": {
+            "$ref": "#/components/schemas/inline_response_200_data_attributes"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_data": {
+        "required": [
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inline_response_200_data_items"
+            }
+          }
+        }
+      },
+      "inline_response_200_meta_pagination": {
+        "required": [
+          "page",
+          "pageCount",
+          "pageSize",
+          "total"
+        ],
+        "type": "object",
+        "properties": {
+          "pageCount": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          }
+        }
+      },
+      "inline_response_200_meta": {
+        "required": [
+          "pagination"
+        ],
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/inline_response_200_meta_pagination"
+          }
+        }
+      },
+      "inline_response_200_1_user": {
+        "required": [
+          "blocked",
+          "confirmed",
+          "email",
+          "id",
+          "provider",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "blocked": {
+            "type": "boolean"
+          },
+          "confirmed": {
+            "type": "boolean"
+          },
+          "email": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
