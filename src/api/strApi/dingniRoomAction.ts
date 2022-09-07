@@ -1,7 +1,6 @@
 import request from "../request"
 
 type Options = Parameters<typeof request>['1']
-
 /**
  * 获取餐饮店列表 
  * */

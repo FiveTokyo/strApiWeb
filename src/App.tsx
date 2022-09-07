@@ -15,26 +15,21 @@ import {
 import { pushHistoryUrl, historyUrls } from './utils/getViewHistory';
 import { uerLogin } from './api/strApi/userAction';
 import { setLockr } from './utils/localStr';
-import { useRequest } from '../src/hooks/useRequest';
+import { useRequest } from '../request/index';
 import './App.css';
-import { ChefApi } from './generated/openapi';
 
 export let userInfoContext: any = {};
 
 function App(_props: any) {
   const location = useLocation();
-  const { configuration } = useRequest();
-
-  const cheApi = new ChefApi(configuration);
   const navigationType = useNavigationType();
-  // const [request, token, tokenValidity] = useRequest();
+  const [request, token, tokenValidity] = useRequest();
   const navigate = useNavigate();
 
   useLayoutEffect(() => {
     (async () => {
       try {
-        await cheApi.getChefsRaw({paginationPage: 1});
-
+        
         // const test = await request('/api/auth/local', {
         //   method: 'POST',
         //   data: {
@@ -50,7 +45,7 @@ function App(_props: any) {
         // setLockr('jwt', res.jwt);
       } catch (error) {}
     })();
-  }, []);
+  }, [tokenValidity]);
   // useEffect(effectFunc, []) 类似于 componentDidMount
   useLayoutEffect(() => {
     removeAllPendingRequestsRecord();

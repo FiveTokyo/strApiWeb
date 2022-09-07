@@ -8,7 +8,7 @@
     "build:analyzer": "cross-env ANALYZER=true react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "codegen": "rimraf -rf src/generated/openapi && openapi-generator-cli generate -i ./openapi/test.json -o src/generated/openapi -g typescript-fetch --additional-properties=supportsES6=true,npmVersion=6.9.0,typescriptThreePlus=true"
+    "codegen": "rimraf -rf src/generated/openapi && openapi-generator-cli generate -i http://127.0.0.1:4523/export/openapi/8 -o src/generated/openapi -g typescript-fetch --additional-properties=supportsES6=true,npmVersion=6.9.0,typescriptThreePlus=true"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -31,6 +31,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "url": "^0.11.0",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
